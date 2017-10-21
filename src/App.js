@@ -52,6 +52,7 @@ class App extends Component {
         <option value="12" key={"12"}>12</option>
     </select>
     <button onClick={() => this.handlePrev()}>prev</button>
+    <span className="white pa3">{this.state.page}</span>
     <button onClick={() => this.handleNext()}>next</button>
 
       </div>
