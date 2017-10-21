@@ -15,21 +15,46 @@ class App extends Component {
       page: 1
     };
   }
+
+
+  handleKeydown(event) {
+    const keys = {
+      ESC: 27,
+      LEFT: 37,
+      RIGHT: 39
+    };
+
+
+    if (event.keyCode === keys.LEFT) {
+      this.handlePrev();
+    } else if (event.keyCode === keys.RIGHT) {
+      this.handleNext();
+    }
+  }
+  componentDidMount() {
+    document.addEventListener('keydown', this.handleKeydown.bind(this));
+  }
+
   handleYear(e) {
     this.setState({year: e.target.value})
   }
+
   handleMonth(e) {
     this.setState({month: e.target.value})
   }
+
   handlePrev() {
     this.setState({page: this.state.page-1});
   }
+
   handleNext() {
     this.setState({page: this.state.page+1});
   }
+
   getUrl() {
     return `http://archive.esquire.com/image/spread/${this.state.year}${this.state.month}01/${this.state.page}`
   }
+
   render() {
     return (
       <div>
